@@ -1,0 +1,109 @@
+</div><!--post-topbar end-->
+</div><!--main-ws-sec end-->
+</div>
+<div class="col-lg-3 pd-right-none no-pd">
+<div class="right-sidebar">
+    <div class="widget widget-about">
+        <img src="/images/wd-logo.png" alt="">
+        <h3>Track Time on Workwise</h3>
+        <span>Pay only for the Hours worked</span>
+        <div class="sign_link">
+            <h3><a href="https://www.securityknowledgeframework.org/" target="_blank" title="">Learn More</a></h3>
+        </div>
+    </div><!--widget-about end-->
+    <div class="widget widget-jobs">
+        <div class="sd-title">
+            <h3>Top Jobs</h3>
+            <i class="la la-ellipsis-v"></i>
+        </div>
+        <div class="jobs-list">
+            <div class="job-info">
+                <div class="job-details">
+                    <h3>Senior Product Designer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                </div>
+                <div class="hr-rate">
+                    <span>$25/hr</span>
+                </div>
+            </div><!--job-info end-->
+            <div class="job-info">
+                <div class="job-details">
+                    <h3>Senior UI / UX Designer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                </div>
+                <div class="hr-rate">
+                    <span>$25/hr</span>
+                </div>
+            </div><!--job-info end-->
+            <div class="job-info">
+                <div class="job-details">
+                    <h3>Junior Seo Designer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                </div>
+                <div class="hr-rate">
+                    <span>$25/hr</span>
+                </div>
+            </div><!--job-info end-->
+            <div class="job-info">
+                <div class="job-details">
+                    <h3>Senior PHP Designer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                </div>
+                <div class="hr-rate">
+                    <span>$25/hr</span>
+                </div>
+            </div><!--job-info end-->
+            <div class="job-info">
+                <div class="job-details">
+                    <h3>Senior Developer Designer</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                </div>
+                <div class="hr-rate">
+                    <span>$25/hr</span>
+                </div>
+            </div><!--job-info end-->
+        </div><!--jobs-list end-->
+    </div><!--widget-jobs end-->
+</div><!--right-sidebar end-->
+</div>
+</div>
+</div><!-- main-section-data end-->
+</div> 
+</div>
+</main>
+</div><!--theme-layout end-->
+
+
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/popper.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.mCustomScrollbar.js"></script>
+<script type="text/javascript" src="/lib/slick/slick.min.js"></script>
+<script type="text/javascript" src="/js/scrollbar.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+<script>
+function delete_cookie() {
+    document.cookie = "JSESSIONID=;path=/;expires=Thu, 01 Jan 1970 00:00:01 GMT";
+    window.location.href = "/dashboard/1";
+}
+
+
+function hideAdminFunctions(){
+    let ca = document.cookie.split(';');
+    let isAdmin = false;
+    for(let i = 0; i < ca.length; i++) {
+        console.log(ca[i]);
+        if(ca[i].trim()=="userrole=YWRtaW4=") isAdmin=true;
+    }
+
+    if(!isAdmin){
+      const adminElements=document.getElementsByClassName("admin");
+      for (let i = 0; i < adminElements.length; i++) {
+        adminElements[i].style.display="none";
+      }
+    }
+}
+</script>
+</body>
+</html>

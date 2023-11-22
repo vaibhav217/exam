@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OWASP-SKF Workshop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<link rel="stylesheet" type="text/css" href="/css/animate.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/line-awesome.css">
+<link rel="stylesheet" type="text/css" href="/css/line-awesome-font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" type="text/css" href="/lib/slick/slick.css">
+<link rel="stylesheet" type="text/css" href="/lib/slick/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/responsive.css">
+</head>
+<body onload="hideAdminFunctions()">
+	<div class="wrapper">
+		<header>
+			<div class="container">
+				<div class="header-data">
+					<div class="logo">
+						<a href="/" title=""><img src="/images/logo.png" alt=""></a>
+					</div><!--logo end-->
+					<div class="search-bar">
+						<form method="POST" action="/search">
+							<input type="text" id="search" name="search" placeholder="Search...">
+							<button type="submit"><i class="la la-search"></i></button>
+						</form>
+					</div><!--search-bar end-->
+					<nav>
+						<ul>
+							<li>
+								<a href="/dashboard/1" title="">
+									<span><img src="/images/icon1.png" alt=""></span>
+									Home
+								</a>
+							</li>
+							<li>
+								<a href="/companies" title="">
+									<span><img src="/images/icon2.png" alt=""></span>
+									Companies
+								</a>
+								<ul>
+									<li><a href="/companies" title="">Companies</a></li>
+									<li th:if="${!#strings.isEmpty(session.loggedin)}"><a href="/companies/new" title="">Add Company Profile</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="/profile" title="">
+									<span><img src="/images/icon4.png" alt=""></span>
+									Profiles
+								</a>
+								<ul>
+									<li th:if="${!#strings.isEmpty(session.loggedin)}"><a href="/profile" title="">User Profile</a></li>
+									<li><a href="/profile/all" title="">All profiles</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav><!--nav end-->
+					<div class="menu-btn">
+						<a href="#" title=""><i class="fa fa-bars"></i></a>
+                    </div><!--menu-btn end-->
+					<div class="user-account">
+						<div th:if="${!#strings.isEmpty(session.loggedin)}"	class="user-info">
+							<a href="#" title="" th:text="${session.username}"></a>
+							<i class="la la-sort-down"></i>
+						</div>
+						<div th:if="${!#strings.isEmpty(session.loggedin)}" class="user-account-settingss">
+							<ul class="us-links">
+								<li><a href="/offers" title="">Company offers</a></li>
+							</ul>
+							<h3 class="tc"><a href="javascript:delete_cookie()" title="">Logout</a></h3>
+                        </div><!--user-account-settingss end-->
+                                <div class="user-info" th:if="${#strings.isEmpty(session.loggedin)}">
+                                        <a href="/login" title="">Login</a>
+                                    <i class="la la-user"></i>
+                                </div>
+					</div>
+				</div><!--header-data end-->
+			</div>
+		</header><!--header end-->
+
+		<main>
+			<div class="main-section">
+				<div class="container">
+					<div class="main-section-data">
+						<div class="row">
+							<div class="col-lg-3 col-md-4 pd-left-none no-pd">
+								<div class="main-left-sidebar no-margin">
+									<div class="user-data full-width">
+										<div class="user-profile">
+											<div class="username-dt">
+												<div class="usr-pic">
+													<img th:if="${!#strings.isEmpty(session.loggedin)}" th:src="@{${'/images/'+ session.pic}}" alt="">
+													<img th:if="${#strings.isEmpty(session.loggedin)}" src="/images/skf.png" alt="">
+												</div>
+											</div><!--username-dt end-->
+											<div class="user-specs">
+												<h3 th:if="${#strings.isEmpty(session.loggedin)}">OWASP-SKF</h3>
+												<h3 th:if="${!#strings.isEmpty(session.loggedin)}" th:text="${session.username}"></h3>
+												<span th:if="${!#strings.isEmpty(session.loggedin)}" th:text="${session.title}"></span>
+											</div>
+										</div><!--user-profile end-->
+										<ul class="user-fw-status" th:if="${!#strings.isEmpty(session.loggedin)}">
+											<li>
+												<a href="/profile" title="">View Profile</a>
+												<br><br>
+												<a href="/profile/edit" title="">Edit Profile</a>
+											</li>
+										</ul>
+									</div><!--user-data end-->
+								
+									<div class="tags-sec full-width">
+										<ul>
+											<li><a href="/about" title="">About</a></li>
+											<li th:if="${!#strings.isEmpty(session.loggedin)}"><a class="admin" href="/monitoring" title="">Status</a></li>
+											<li th:if="${!#strings.isEmpty(session.loggedin)}"><a class="admin" href="/config" title="">Config</a></li>
+										</ul>
+										<div class="cp-sec">
+											<p><img src="/images/cp.png" alt="">Copyright 2020</p>
+										</div>
+									</div><!--tags-sec end-->
+								</div><!--main-left-sidebar end-->
+							</div>
+							<div class="col-lg-6 col-md-8 no-pd">
+								<div class="main-ws-sec">
+									<div class="post-topbar">
